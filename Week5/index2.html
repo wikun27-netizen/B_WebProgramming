@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>To-Do List</title>
+        <style>
+            #list {
+                border: 1px solid grey;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Write a new task and click add</h2>
+        <input type="text" id="task" required>
+
+        <input type="button" id="add" value="Add" onclick="add()">
+        <input type="button" id="remove" value="Remove" onclick="remove()">
+
+        <br><br>
+
+        <ul id="todolist"></ul>
+
+        <script>
+            function add() {
+                var task = document.getElementById("task").value
+                var ul = document.getElementById("todolist")
+
+                var li = document.createElement("li")
+                var li_text = document.createTextNode(task)
+
+                li.appendChild(li_text)
+                ul.appendChild(li)
+            }
+
+            function remove() {
+                var ul = document.getElementById("todolist")
+                var li = document.getElementsByTagName("li")
+
+                if (li.length > 0) {
+                    ul.removeChild(li[li.length - 1])
+                }
+                else {
+                    alert("Empty task list.")
+                }
+            }
+        </script>
+    </body>
+</html>

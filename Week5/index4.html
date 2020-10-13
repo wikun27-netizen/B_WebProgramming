@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Another Example</title>
+    </head>
+    <body>
+        <p>Please rate:</p>
+        <p>
+            <input type="radio" name="rate" value="Very poor"> Very poor
+            <input type="radio" name="rate" value="Poor"> Poor
+            <input type="radio" name="rate" value="Ok"> Ok
+            <input type="radio" name="rate" value="Good"> Good
+            <input type="radio" name="rate" value="Very good"> Very Good
+        </p>
+        <button id="btnRate">Submit</button>
+
+        <script>
+            var btn = document.getElementById("btnRate")
+
+            btn.addEventListener("click", () => {
+                var rates = document.getElementsByName("rate") //array of input type radio
+                rates.forEach((rate) => {
+                    if (rate.checked) {
+                        alert(`You rated: ${rate.value}. Thank you for your ${rate.value} rating`)
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

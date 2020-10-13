@@ -1,0 +1,93 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewritter</title>
+    <style>
+        #display {
+            border: 1px solid gray;
+            width: 70%;
+            padding: 5px;
+        }
+
+        button {
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <p id="display">Click on the buttons below.</p>
+    <button onclick="display('a')">A</button>
+    <button onclick="display('b')">B</button>
+    <button onclick="display('c')">C</button>
+    <button onclick="display('d')">D</button>
+    <button onclick="display('e')">E</button>
+    <button onclick="display('f')">F</button>
+    <button onclick="display('g')">G</button>
+    <button onclick="display('h')">H</button>
+    <button onclick="display('i')">I</button>
+    <button onclick="display('j')">J</button>
+    <br><br>
+    <button onclick="display('k')">K</button>
+    <button onclick="display('l')">L</button>
+    <button onclick="display('m')">M</button>
+    <button onclick="display('n')">N</button>
+    <button onclick="display('o')">O</button>
+    <button onclick="display('p')">P</button>
+    <button onclick="display('q')">Q</button>
+    <button onclick="display('s')">R</button>
+    <button onclick="display('u')">T</button>
+    <button onclick="display('v')">V</button>
+    <br><br>
+    <button onclick="display('w')">W</button>
+    <button onclick="display('x')">X</button>
+    <button onclick="display('y')">Y</button>
+    <button onclick="display('z')">Z</button>
+    <button style="width: 64px" onclick="display(' ')">Space</button>
+    <br><br>
+    <button id="clear" style="width: 64px" onclick="clean()">Clear</button>
+    <button id="capslock" style="width: 100px" onclick="toggleCaps()">caps lock</button>
+
+    <script>
+        var first = true;
+        var capslock = false;
+
+        function display() {
+            document.getElementById("display").innerHTML = "Click on the buttons below.";
+            first = true;
+        }
+
+        function toggleCaps() {
+            capslock = !capslock;
+            if (capslock) {
+                str = "CAPS LOCK";
+            }
+            else {
+                str = "caps lock";
+            }
+            document.getElementById("capslock").innerHTML = str;
+        }
+
+        function display(token) {
+            var p = document.getElementById("display");
+
+            if (first) {
+                p.innerHTML = "";
+                first = !first;
+            }
+
+            if (capslock) {
+                token = token.toUpperCase();
+            }
+
+            p.innerHTML = p.innerHTML + token;
+        }
+
+        function clean() {
+            document.getElementById("display").innerHTML = "Click on the buttons below.";
+            first = true;
+        }
+    </script>
+
+</body>
+</html>

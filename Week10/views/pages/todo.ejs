@@ -1,0 +1,51 @@
+<script src="https://unpkg.com/feather-icons"></script>
+<h1>To-Do List</h1>
+<div class="card">
+    <div class="card-body">
+        <form action="/todo/add" method="post">
+            <div class="form-group">
+                <label for="taskName">Add a new task</label>
+                <input type="text" class="form-control" name="taskNow" autofocus required>
+            </div>
+            <input type="submit" class="btn btn-primary" name="submit" value="Save">
+        </form>
+    </div>
+</div>
+
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Task Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (!locals.tasks || tasks.length == 0) { %>
+            <tr><td colspan="3" class="text-center"><i>No tasks!</i></td></tr>
+        <% } else { %>
+            <% for (index = 0; index < tasks.length; index++) { %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= tasks[index] %></td>
+                <td>
+                    <form action="/todo/done/<%= index %>" method="post">
+                        <button type="submit" class="btn btn-outline-success">
+                            <i data-feather="slash"></i>
+                            Done
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        <% } %>
+    </tbody>
+</table>
+<script>
+    feather.replace()
+</script>
+
+<%- contentFor ('title') %>
+To-Do List
